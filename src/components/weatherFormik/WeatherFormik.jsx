@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Formik, Field, Form, useFormik } from 'formik';
+import React, { useState } from 'react'
+import { useFormik } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios'
 
@@ -21,10 +21,8 @@ function weatherFormik() {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-        //   alert(JSON.stringify(values, null, 2));
           console.log('values', values)
-        //   e.preventDefault();
-
+       
           axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${values.cityName}&units=metric&appid=e0f99c494c2ce394a18cc2fd3f100543`)
           .then(response => {
               
