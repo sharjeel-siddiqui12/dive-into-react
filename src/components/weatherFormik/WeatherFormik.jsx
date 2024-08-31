@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { Formik, Field, Form } from 'formik';
 import axios from 'axios'
 
-function weather() {
+function weatherFormik() {
     const [weatherData, setWeatherData] = useState({})
     const [cityName, setCityName] = useState("")
 
@@ -22,12 +23,48 @@ function weather() {
   return (
     
     <div>
-        <form className='w-[100%]' onSubmit={submitHandler}>
+
+
+<Formik
+      initialValues={{
+        firstName: '',
+        lastName: '',
+        email: '',
+      }}
+      onSubmit={ (values) => {
+        console.log(values);
+      }}
+    >
+      <Form>
+        <label htmlFor="firstName">City Name</label>
+        <Field id="firstName" name="firstName" placeholder="Jane" className='border border-black ml-3 mt-3'/><br />
+
+        <label htmlFor="lastName">Last Name</label>
+        <Field id="lastName" name="lastName" placeholder="Doe" className='border border-black ml-3 mt-3' /><br />
+
+        <label htmlFor="email">Email</label>
+        <Field
+          id="email"
+          name="email"
+          placeholder="jane@acme.com"
+          type="email"
+          className='border border-black ml-3 mt-3'
+        /> <br />
+        <button className='border border-black ml-3 rounded p-2 w3 mt-3' type="submit ">Submit</button>
+      </Form>
+    </Formik>
+
+
+        {/* <form className='w-[100%]' onSubmit={submitHandler}>
             <input className='mt-10 border border-red-500 h-8' type="text" placeholder="Enter City Name" value={cityName} required onChange={(e) =>{ setCityName(e.target.value)  }}  />
             <button className='border border-black-800 text-[20px] h-8' type="submit">Get Weather</button>
 
         </form>
-        
+         */}
+
+
+
+
         <div className='flex justify-center align-middle flex-col text-[20px] text-blue-950 font-serif font-bold m-[30px] '>
             
         {
@@ -52,4 +89,4 @@ function weather() {
   )
 }
 
-export default weather
+export default weatherFormik
