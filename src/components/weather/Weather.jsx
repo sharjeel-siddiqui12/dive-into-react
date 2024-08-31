@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Post from '/src/components/Post/Post.jsx'
 
 function weather() {
     const [weatherData, setWeatherData] = useState({})
@@ -22,14 +21,15 @@ function weather() {
   return (
     
     <div>
-        <form onSubmit={submitHandler}>
-            <input type="text" placeholder="Enter City Name" value={cityName} required onChange={(e) =>{ setCityName(e.target.value)  }} />
-            <button type="submit">Get Weather</button>
+        <form className='w-[100%]' onSubmit={submitHandler}>
+            <input className='mt-10 border border-red-500' type="text" placeholder="Enter City Name" value={cityName} required onChange={(e) =>{ setCityName(e.target.value)  }}  />
+            <button className='border border-black-800 text-[20px] h-8' type="submit">Get Weather</button>
 
         </form>
         
-        <div>
-            {
+        <div className='flex justify-center align-middle flex-col text-[30px] text-blue-950 font-serif font-bold m-[30px] '>
+            
+        {
                 weatherData.main && (
                     <>
                         <h1>{weatherData.name}</h1>
@@ -38,6 +38,8 @@ function weather() {
                     </>
                 )
             }
+
+
         </div>
     
 
