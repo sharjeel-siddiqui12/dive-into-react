@@ -34,10 +34,10 @@ function weather() {
                 weatherData.main && (
                     <>
                         Name: {weatherData?.name} <br/>
-                        Temperature{weatherData?.main?.temp}°C<br/>
-                        Max Temperature {weatherData?.main?.temp_max}°C<br/>
-                        Min Temperature{weatherData?.main?.temp_min}°C<br/>
-                        Description{weatherData?.weather[0].description}<br/>
+                        Temperature: {weatherData?.main?.temp}°C<br/>
+                        Max Temperature: {weatherData?.main?.temp_max}°C<br/>
+                        Min Temperature: {weatherData?.main?.temp_min}°C<br/>
+                        Description: {weatherData?.weather[0].description}<br/>
                     </>
                 )
             }
