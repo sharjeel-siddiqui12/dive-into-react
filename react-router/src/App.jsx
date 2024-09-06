@@ -1,66 +1,67 @@
 import React, { useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Routes, 
-  Route,
-  Link
-} from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 
 import Home from './components/home/Home.jsx';
 import Gallery from './components/gallery/Gallery.jsx';
-import About from './components/About/About.jsx';
-import PostAPI from './components/postAPI/PostAPI.jsx';
-import Weather from './components/weather/Weather.jsx';
-import WeatherFormik from './components/weatherFormik/weatherFormik.jsx';
-import FormikExample from './components/formikExample/FormikExample.jsx';
-import FormikEmailPass from './components/formikEmailPass/FormikEmailPass.jsx';
+import About from './components/about/About.jsx';
+import Signup from './components/signup/Signup.jsx';
+import Login from './components/login/Login.jsx';
 
 function App() {
-  return (
-    <Router>
-      <div className='m-5'>
-        <nav>
-          <ul className='flex list-none space-x-8 m-4 p-4 no-underline text-white bg-slate-900 w-[100%] rounded'>
-            <li className=' hover:underline'>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/gallery">Gallery</Link>
-            </li>
-            <li>
-              <Link to="/post">Post</Link>
-            </li>
-            <li>
-              <Link to="/weather">Weather</Link>
-            </li>
-            <li>
-              <Link to="/weatherFormik">WeatherFormik</Link>
-            </li>
-            <li>
-              <Link to="/formikExample">FormikExample</Link>
-            </li>
-            <li>
-              <Link to="/formikEmailPass">FormikEmailPass</Link>
-            </li>
-          </ul>
-        </nav>
+  const [isLogin, setIsLogin] = useState(false);
 
-      
+  return (
+    <div className="container mx-auto p-4">
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={() => { setIsLogin(!isLogin) }}
+      >
+        Toggle login test
+      </button>
+
+      <ul className="flex justify-center mt-4" style={{ backgroundColor: 'lightgray' }}>
+        {isLogin ? (
+          <>
+            <li className="mr-4">
+              <Link to={`/`} className="text-blue-500 hover:text-blue-700">Home</Link>
+            </li>
+            <li className="mr-4">
+              <Link to={`/gallery`} className="text-blue-500 hover:text-blue-700">Gallery</Link>
+            </li>
+            <li className="mr-4">
+              <Link to={`/about`} className="text-blue-500 hover:text-blue-700">About</Link>
+            </li>
+            <li className="mr-4">
+              <Link to={`/profile`} className="text-blue-500 hover:text-blue-700">Profile</Link>
+            </li>
+          </>
+        ) : (
+          <>
+            <li className="mr-4">
+              <Link to={`/`} className="text-blue-500 hover:text-blue-700">Login</Link>
+            </li>
+            <li className="mr-4">
+              <Link to={`/signup`} className="text-blue-500 hover:text-blue-700">Signup</Link>
+            </li>
+          </>
+        )}
+      </ul>
+
+      {isLogin ? (
         <Routes>
-          <Route path="/about" element={<About />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/post" element={<PostAPI />} />
-          <Route path="/weather" element={<Weather />} />
-          <Route path="/weatherFormik" element={<WeatherFormik />} />
-          <Route path="/formikExample" element={<FormikExample />} />
-          <Route path="/formikEmailPass" element={<FormikEmailPass />} />
-          <Route path="/" element={<Home />} /> 
+          <Route path="/" element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="gallery" element={<Gallery />} />
+          <Route path="*" element={<Navigate to="/" replace={true} />} />
         </Routes>
-      </div>
-    </Router>
+      ) : (
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="*" element={<Navigate to="/" replace={true} />} />
+        </Routes>
+      )}
+    </div>
   );
 }
 
