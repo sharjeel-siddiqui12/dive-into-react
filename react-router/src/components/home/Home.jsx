@@ -1,4 +1,3 @@
-// import React, { useState, useEffect } from 'react'
 import Post from '/src/components/Post/Post.jsx'
 
 function Home() {
@@ -9,12 +8,7 @@ function Home() {
   //   setLit(!isLit)
 // }
 
-    
-
   return (
-    
-
-
     
     <div className='flex flex-col align-middle'>
     
@@ -38,10 +32,8 @@ function Home() {
         postImage = "https://scontent.fkhi8-1.fna.fbcdn.net/v/t39.30808-6/457327875_914618840698870_4766181786099087605_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHj_2u0o34l0uv19TqUK8K65VZ-Fwdc5ublVn4XB1zm5qoyKw79f2GIeBRMRN5UsVLLIS1_dDx7cMb7Nf-fuVdQ&_nc_ohc=RmWxQOm0WPcQ7kNvgE6bXlO&_nc_ht=scontent.fkhi8-1.fna&_nc_gid=AYDa0vpUk9d7-gIOXP35j6c&oh=00_AYBWUO7FkXQFGCgt0rKzwdZZEgqrySwPx6OmAV6QUn4RLA&oe=66D80D1D"
        />
 
-
-
     </div>
   )
 }
 
-export default Home
+export default Home;
