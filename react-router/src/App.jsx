@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 
-
 import Home from './components/home/Home.jsx';
 import Gallery from './components/gallery/Gallery.jsx';
 import About from './components/about/About.jsx';
